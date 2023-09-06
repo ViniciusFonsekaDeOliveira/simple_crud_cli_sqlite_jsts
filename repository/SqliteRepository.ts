@@ -123,7 +123,7 @@ export class SqliteRepository implements SQLRepository {
 
   closeConnection(): void {
     if (this.getConnection()) {
-      console.log("Conexão encerrada com sucesso!");
+      console.log("Conexão encerrada com sucesso");
       this.connection.close();
     }
   }
