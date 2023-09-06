@@ -1,7 +1,8 @@
 import { Database } from "sqlite3";
 import { getWhereClauseConditions } from "./repository-utils";
+import { SQLRepository } from "./SQLRepository";
 
-export class SqliteRepository {
+export class SqliteRepository implements SQLRepository {
   private connection: Database;
 
   constructor(connection: Database) {
@@ -26,7 +27,10 @@ export class SqliteRepository {
     return new Promise((resolve, reject) => {
       cursor.exec(query, (err) => {
         if (err) reject(err);
-        else resolve();
+        else {
+          console.log(`Tabela ${tableName} criada com sucesso!`);
+          resolve();
+        }
       });
     });
   }
@@ -118,6 +122,9 @@ export class SqliteRepository {
   }
 
   closeConnection(): void {
-    if (this.getConnection()) this.connection.close();
+    if (this.getConnection()) {
+      console.log("Conexão encerrada com sucesso!");
+      this.connection.close();
+    }
   }
 }
