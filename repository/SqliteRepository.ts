@@ -56,7 +56,7 @@ export class SqliteRepository implements SQLRepository {
     const query = `SELECT ${fields} FROM ${tableName} WHERE ${clauseConditions}`;
     const cursor = this.getConnection();
     return new Promise((resolve, reject) => {
-      cursor.get<T>(query, (err, row) => {
+      cursor.get<T>(query, clauseValues, (err, row) => {
         if (err)
           reject(new Error(`Erro ao encontrar um objeto: ${err.message}`));
         else resolve(row);

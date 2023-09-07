@@ -68,4 +68,12 @@ export class Person {
       email: this.get_email(),
     };
   }
+
+  toString(): string {
+    return `\nPerson {uuid: ${this.get_uuid()},
+      firstname: ${this.get_firstname()},
+      lastname: ${this.get_lastname()},
+      nickname: ${this.get_nickname()},
+      email: ${this.get_email()}}\n`;
+  }
 }

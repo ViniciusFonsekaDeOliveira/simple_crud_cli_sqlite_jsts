@@ -4,4 +4,4 @@ package-lock.json
 comandos.txt
 main
 assets
-seeder/mydb.db
+mydb.db
