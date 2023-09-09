@@ -57,7 +57,7 @@ describe("Sqlite Repository Testing", () => {
 
     it("Should create a table correctly", async () => {
       const tableName = "test";
-      const tableSchema = {
+      const tableSchema: Record<string, string> = {
         id: "INTEGER PRIMARY KEY",
         test_name: "TEXT",
       };
@@ -74,10 +74,10 @@ describe("Sqlite Repository Testing", () => {
 
       expect(createTableSpy).toHaveBeenCalledWith(tableName, tableSchema);
 
-      //   expect(connectionSpy).toBeCalledWith(
-      //     "CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY,test_name TEXT)",
-      //     expect.any(Function)
-      //   );
+      expect(connectionSpy).toBeCalledWith(
+        "CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY,test_name TEXT)",
+        expect.any(Function)
+      );
 
       expect(consoleSpy).toHaveBeenCalledWith(
         "Tabela test criada com sucesso!"

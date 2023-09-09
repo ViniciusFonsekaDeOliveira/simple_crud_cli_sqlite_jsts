@@ -20,9 +20,7 @@ export class SqliteRepository implements SQLRepository {
     const schema_columns = Object.keys(table_schema)
       .map((column) => `${column} ${table_schema[column]}`)
       .join(",");
-    const query = `CREATE TABLE IF NOT EXISTS ${tableName} (
-      ${schema_columns}
-    )`;
+    const query = `CREATE TABLE IF NOT EXISTS ${tableName} (${schema_columns})`;
     const cursor = this.getConnection();
     return new Promise((resolve, reject) => {
       cursor.exec(query, (err) => {
